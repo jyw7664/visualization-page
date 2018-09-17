@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from "recharts"
+import {AreaChart, LineChart, Line, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts"
 
 const data = [
       {name: '1992', mixed: 0, female: 0, male: 17},
@@ -74,6 +74,18 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+
+        <LineChart width={600} height={300} data={data}
+          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+         <XAxis dataKey="name"/>
+         <YAxis/>
+         <CartesianGrid strokeDasharray="3 3"/>
+         <Tooltip/>
+         <Legend />
+         <Line type="monotone" dataKey='mixed' stroke='#ffc658' activeDot={{r:8}}/>
+         <Line type="monotone" dataKey='female' stroke='#8884d8' />
+         <Line type="monotone" dataKey='male' stroke='#82ca9d' />
+        </LineChart>
 
         <AreaChart width={600} height={400} data={data} stackOffset="expand"
             margin={{top: 10, right: 30, left: 0, bottom: 0}} >
